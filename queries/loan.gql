@@ -1,0 +1,20 @@
+query loans {
+  query loans {
+    count
+    data {
+      id
+      amount
+      interest
+      duration
+      status
+      createdAt
+      updatedAt
+      borrower {
+        id
+      }
+      lender {
+        id
+      }
+    }
+  }
+}

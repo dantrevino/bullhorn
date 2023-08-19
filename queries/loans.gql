@@ -1,0 +1,64 @@
+query Loans(
+  $where: LoanWhereInput
+  $skip: Int
+  $take: Int
+  $gt: LoanWhereInput
+  $lt: LoanWhereInput
+) {
+  loans(where: $where, skip: $skip, take: $take, gt: $gt, lt: $lt) {
+    count
+    data {
+      id
+      vault
+      interestRate
+      startDate
+      endDate
+      term
+      status
+      principal
+      borrower {
+        id
+      }
+      lender {
+        id
+      }
+      collateral {
+        id
+        assets {
+          id
+          action {
+            id
+            configuration
+            type
+          }
+          addresses {
+            id
+            type
+            publicKey
+            value
+          }
+          content
+          type
+          collateral {
+            id
+          }
+        }
+      }
+      addresses {
+        id
+        type
+        publicKey
+        value
+      }
+    }
+  }
+}
+
+query LoanAmounts($where: LoanWhereInput, $skip: Int, $take: Int) {
+  loans(where: $where, skip: $skip, take: $take) {
+    count
+    data {
+      principal
+    }
+  }
+}

@@ -1,0 +1,58 @@
+mutation CreateLoan($data: LoanDataInput) {
+  createLoan(data: $data) {
+    id
+    interestRate
+    startDate
+    endDate
+    term
+    status
+    principal
+    borrower {
+      id
+    }
+    lender {
+      id
+    }
+    collateral {
+      id
+      assets {
+        id
+        content
+        type
+        collateral {
+          id
+        }
+      }
+    }
+    addresses {
+      id
+    }
+  }
+}
+
+mutation UpdateLoan($where: LoanWhereInput, $data: LoanDataInput) {
+  updateLoan(where: $where, data: $data) {
+    id
+    interestRate
+    startDate
+    endDate
+    term
+    status
+    borrower {
+      id
+    }
+    lender {
+      id
+    }
+    collateral {
+      id
+      assets {
+        id
+      }
+    }
+    addresses {
+      id
+    }
+    vault
+  }
+}
